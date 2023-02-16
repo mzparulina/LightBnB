@@ -9,7 +9,6 @@ const pool = new Pool({
   database: 'lightbnb'
 });
 
-
 /// Users
 
 /**
@@ -18,17 +17,26 @@ const pool = new Pool({
  * @return {Promise<{}>} A promise to the user.
  */
 const getUserWithEmail = function(email) {
-  let user;
-  for (const userId in users) {
-    user = users[userId];
-    if (user.email.toLowerCase() === email.toLowerCase()) {
-      break;
-    } else {
-      user = null;
-    }
-  }
-  return Promise.resolve(user);
-}
+  return pool
+    .query(`SELECT * FROM users WHERE email = $1`, [email])
+    .then((result) => {
+      let user;
+      for (const userId in result.rows) {
+        user = result.rows[userId];
+
+        if (user.email.toLowerCase() === email.toLowerCase()) {
+          break;
+        } else {
+          user = null;
+        }
+      }
+      console.log('user', user);
+      return user;
+    })
+    .catch((err) => {
+      console.log(err.message);
+    });
+};
 exports.getUserWithEmail = getUserWithEmail;
 
 /**
@@ -38,7 +46,7 @@ exports.getUserWithEmail = getUserWithEmail;
  */
 const getUserWithId = function(id) {
   return Promise.resolve(users[id]);
-}
+};
 exports.getUserWithId = getUserWithId;
 
 
@@ -52,7 +60,7 @@ const addUser =  function(user) {
   user.id = userId;
   users[userId] = user;
   return Promise.resolve(user);
-}
+};
 exports.addUser = addUser;
 
 /// Reservations
@@ -79,13 +87,12 @@ const getAllProperties = function(options, limit = 10) {
   return pool
     .query(`SELECT * FROM properties LIMIT $1`, [limit])
     .then((result) => {
-      console.log(result.rows);
       return result.rows;
     })
     .catch((err) => {
       console.log(err.message);
     });
-}
+};
 exports.getAllProperties = getAllProperties;
 
 
