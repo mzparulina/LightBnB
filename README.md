@@ -4,9 +4,9 @@ A simple multi-page Airbnb clone that uses server-side Javascript to display inf
 
 ## LightBnB ERD
 
-  - !["Lighthouse ERD"](https://github.com/mzparulina/LightBnB/blob/main/lightbnb_erd.png)
+!["Lighthouse ERD"](https://github.com/mzparulina/LightBnB/blob/main/docs/lightbnb_erd.png)
 
 ## LightBnB ERD Stretch
-  guest_reviews and rates table
+guest_reviews  rates table
   
-  - !["Lighthouse ERD Stretch"](https://github.com/mzparulina/LightBnB/blob/main/lightbnb_erd_stretch.png)
+!["Lighthouse ERD Stretch"](https://github.com/mzparulina/LightBnB/blob/main/docs/lightbnb_erd_stretch.png)
