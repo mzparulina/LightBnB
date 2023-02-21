@@ -1,4 +1,4 @@
-# LightBnB
+# LightBnB WebApp
 
 A simple multi-page Airbnb clone that uses server-side Javascript to display information from queries to web pages via SQl queries.
 ## Project Structure
@@ -44,12 +44,5 @@ A simple multi-page Airbnb clone that uses server-side Javascript to display inf
 Install all dependencies (using the npm install command).
 Run the development web server using the npm run local.
 
-## LightBnB ERD
-
-  !["Lighthouse ERD"](https://github.com/mzparulina/LightBnB/blob/main/LightBnB_WebApp/docs/lightbnb_erd.png)
-
-  ### WITH Stretch features - guest_reviews & property_reviews)
-    !["Lighthouse ERD Stretch"](https://github.com/mzparulina/LightBnB/blob/main/LightBnB_WebApp/docs/erd.png)
-
 ## Project Screenshot
-   !["Lighthouse Home"](https://github.com/mzparulina/LightBnB/blob/main/LightBnB_WebApp/docs/lightbnb_home.png)
+  !["Lighthouse Home"](https://github.com/mzparulina/LightBnB/blob/main/LightBnB_WebApp/docs/lightbnb_home.png)
