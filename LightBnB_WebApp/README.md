@@ -32,12 +32,12 @@ A simple multi-page Airbnb clone that uses server-side Javascript to display inf
     └── server.js
 ```
 ## Dependencies
-  "bcrypt": "^3.0.6",
-  "body-parser": "^1.19.0",
-  "cookie-session": "^1.3.3",
-  "express": "^4.17.1",
-  "nodemon": "^1.19.1",
-  "pg": "^8.9.0"
+  - "bcrypt": "^3.0.6"
+  - "body-parser": "^1.19.0"
+  - "cookie-session": "^1.3.3"
+  - "express": "^4.17.1"
+  - "nodemon": "^1.19.1"
+  - "pg": "^8.9.0"
 
 ## Getting Started
 
@@ -46,10 +46,10 @@ Run the development web server using the npm run local.
 
 ## LightBnB ERD
 
-  !["Lighthouse ERD"](https://github.com/mzparulina/LightBnB/blob/master/LightBnB_WebApp/docs/lightbnb_erd.png)
+  !["Lighthouse ERD"](https://github.com/mzparulina/LightBnB/blob/main/LightBnB_WebApp/docs/lightbnb_erd.png)
 
   ### WITH Stretch features - guest_reviews & property_reviews)
-    !["Lighthouse ERD Stretch"](https://github.com/mzparulina/LightBnB/blob/master/LightBnB_WebApp/docs/erd.png)
+    !["Lighthouse ERD Stretch"](https://github.com/mzparulina/LightBnB/blob/main/LightBnB_WebApp/docs/erd.png)
 
 ## Project Screenshot
-   !["Lighthouse Home"](https://github.com/mzparulina/LightBnB/blob/master/LightBnB_WebApp/docs/lightbnb_home.png)
+   !["Lighthouse Home"](https://github.com/mzparulina/LightBnB/blob/main/LightBnB_WebApp/docs/lightbnb_home.png)
