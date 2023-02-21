@@ -86,16 +86,17 @@ exports.addUser = addUser;
  */
 const getAllReservations = function(guestId, limit = 10) {
   return pool
-    .query(`SELECT reservations.*
-    FROM reservations
-    JOIN properties ON reservations.property_id = properties.id
+    .query(`SELECT properties.*, reservations.*, avg(rating) as average_rating
+    FROM properties
+    JOIN reservations ON properties.id = reservations.property_id
     JOIN property_reviews ON properties.id = property_reviews.property_id
     WHERE reservations.guest_id = $1
-    GROUP BY properties.id, reservations.id
-    ORDER BY reservations.start_date
+    AND reservations.end_date < now()::date
+    GROUP BY reservations.id, properties.id
+    ORDER BY start_date
     LIMIT $2;`, [guestId, limit])
     .then((result) => {
-      return result.rows[0];
+      return result.rows;
     })
     .catch((err) => {
       console.log(err.message);
@@ -114,6 +115,7 @@ exports.getAllReservations = getAllReservations;
 const getAllProperties = function(options, limit = 10) {
 
   const queryParams = [];
+  let filteredParams = [];
   let queryString = `
     SELECT properties.*, avg(property_reviews.rating) as average_rating
     FROM properties
@@ -143,7 +145,7 @@ const getAllProperties = function(options, limit = 10) {
     }
   }
   // Group BY
-  queryString += `GROUP BY properties.id`;
+  queryString += `GROUP BY properties.id `;
   // if a minimum_rating is passed in, only return properties with an average rating equal to or higher than that
   if (options.minimum_rating) {
     queryParams.push(options.minimum_rating);
@@ -155,8 +157,10 @@ const getAllProperties = function(options, limit = 10) {
     ORDER BY cost_per_night
     LIMIT $${queryParams.length};
     `;
-
-  return pool.query(queryString, queryParams)
+  //removed no values in query params
+  filteredParams = queryParams.map(p => p);
+  console.log(queryString, filteredParams)
+  return pool.query(queryString, filteredParams)
     .then((res) => res.rows)
     .catch((err) => {
       console.log(err.message);
@@ -182,7 +186,6 @@ const addProperty = function(property) {
   
   return pool.query(queryString, values)
     .then(res => {
-      console.log('accepted');
       return res.rows[0];
     })
     .catch(err => {
