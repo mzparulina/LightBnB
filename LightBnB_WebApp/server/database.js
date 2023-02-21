@@ -1,13 +1,4 @@
-const { Pool } = require('pg');
-const properties = require('./json/properties.json');
-const users = require('./json/users.json');
-
-const pool = new Pool({
-  user: 'paulinerevilla',
-  password: '123',
-  host: 'localhost',
-  database: 'lightbnb'
-});
+const db = require('./db');
 
 /// Users
 
@@ -17,7 +8,7 @@ const pool = new Pool({
  * @return {Promise<{}>} A promise to the user.
  */
 const getUserWithEmail = function(email) {
-  return pool
+  return db
     .query(`SELECT * FROM users WHERE email = $1`, [email])
     .then((result) => {
       let user;
@@ -44,7 +35,7 @@ exports.getUserWithEmail = getUserWithEmail;
  * @return {Promise<{}>} A promise to the user.
  */
 const getUserWithId = function(id) {
-  return pool
+  return db
     .query(`SELECT * FROM users WHERE id = $1`, [id])
     .then((result) => {
       return result.rows[0];
@@ -66,7 +57,7 @@ const addUser =  function(user) {
   let email = user.email;
   let pw = user.password;
   
-  return pool
+  return db
     .query(`INSERT INTO users(name, email, password) VALUES($1, $2, $3) RETURNING *`, [name, email, pw])
     .then((result) => {
       return result.rows[0];
@@ -85,7 +76,7 @@ exports.addUser = addUser;
  * @return {Promise<[{}]>} A promise to the reservations.
  */
 const getAllReservations = function(guestId, limit = 10) {
-  return pool
+  return db
     .query(`SELECT properties.*, reservations.*, avg(rating) as average_rating
     FROM properties
     JOIN reservations ON properties.id = reservations.property_id
@@ -159,8 +150,7 @@ const getAllProperties = function(options, limit = 10) {
     `;
   //removed no values in query params
   filteredParams = queryParams.map(p => p);
-  console.log(queryString, filteredParams)
-  return pool.query(queryString, filteredParams)
+  return db.query(queryString, filteredParams)
     .then((res) => res.rows)
     .catch((err) => {
       console.log(err.message);
@@ -184,7 +174,7 @@ const addProperty = function(property) {
 
   const values = [property.owner_id, property.title, property.description, property.thumbnail_photo_url, property.cover_photo_url, property.cost_per_night,property.street, property.city, property.province, property.post_code, property.country, property.parking_spaces, property.number_of_bathrooms, property.number_of_bedrooms];
   
-  return pool.query(queryString, values)
+  return db.query(queryString, values)
     .then(res => {
       return res.rows[0];
     })
