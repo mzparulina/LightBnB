@@ -1,5 +1,6 @@
 # LightBnB
 
+A simple multi-page Airbnb clone that uses server-side Javascript to display information from queries to web pages via SQl queries.
 ## Project Structure
 
 ```
@@ -21,23 +22,34 @@
 │   └── styles
 ├── sass
 └── server
-  ├── apiRoutes.js
-  ├── database.js
-  ├── json
-  ├── server.js
-  └── userRoutes.js
+    ├── db
+    │  ├── database.js
+    │  └── index.js
+    ├── routes
+    │  ├── apiRoutes.js
+    │  └── userRoutes.js
+    ├── json
+    └── server.js
 ```
+## Dependencies
+  "bcrypt": "^3.0.6",
+  "body-parser": "^1.19.0",
+  "cookie-session": "^1.3.3",
+  "express": "^4.17.1",
+  "nodemon": "^1.19.1",
+  "pg": "^8.9.0"
 
-* `public` contains all of the HTML, CSS, and client side JavaScript. 
-  * `index.html` is the entry point to the application. It's the only html page because this is a single page application.
-  * `javascript` contains all of the client side javascript files.
-    * `index.js` starts up the application by rendering the listings.
-    * `network.js` manages all ajax requests to the server.
-    * `views_manager.js` manages which components appear on screen.
-    * `components` contains all of the individual html components. They are all created using jQuery.
-* `sass` contains all of the sass files. 
-* `server` contains all of the server side and database code.
-  * `server.js` is the entry point to the application. This connects the routes to the database.
-  * `apiRoutes.js` and `userRoutes.js` are responsible for any HTTP requests to `/users/something` or `/api/something`. 
-  * `json` is a directory that contains a bunch of dummy data in `.json` files.
-  * `database.js` is responsible for all queries to the database. It doesn't currently connect to any database, all it does is return data from `.json` files.
+## Getting Started
+
+Install all dependencies (using the npm install command).
+Run the development web server using the npm run local.
+
+## LightBnB ERD
+
+  !["Lighthouse ERD"](https://github.com/mzparulina/LightBnB_WebApp/blob/master/docs/lightbnb_erd.png)
+
+  ### WITH Stretch features - guest_reviews & property_reviews)
+    !["Lighthouse ERD Stretch"](https://github.com/mzparulina/LightBnB_WebApp/blob/master/docs/erd.png)
+
+## Project Screenshot
+   !["Lighthouse Home"](https://github.com/mzparulina/LightBnB_WebApp/blob/master/docs/lightbnb_home.png)
