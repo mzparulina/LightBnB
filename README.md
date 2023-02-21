@@ -1,5 +1,6 @@
 # LightBnB Project
 
+ [LightBnB App](https://github.com/mzparulina/LightBnB/tree/main/LightBnB_WebApp):
 A simple multi-page Airbnb clone that uses server-side Javascript to display information from queries to web pages via SQl queries.
 
 ## Dependencies
