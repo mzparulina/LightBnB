@@ -46,10 +46,10 @@ Run the development web server using the npm run local.
 
 ## LightBnB ERD
 
-  !["Lighthouse ERD"](https://github.com/mzparulina/LightBnB_WebApp/blob/master/docs/lightbnb_erd.png)
+  !["Lighthouse ERD"](https://github.com/mzparulina/LightBnB/blob/master/LightBnB_WebApp/docs/lightbnb_erd.png)
 
   ### WITH Stretch features - guest_reviews & property_reviews)
-    !["Lighthouse ERD Stretch"](https://github.com/mzparulina/LightBnB_WebApp/blob/master/docs/erd.png)
+    !["Lighthouse ERD Stretch"](https://github.com/mzparulina/LightBnB/blob/master/LightBnB_WebApp/docs/erd.png)
 
 ## Project Screenshot
-   !["Lighthouse Home"](https://github.com/mzparulina/LightBnB_WebApp/blob/master/docs/lightbnb_home.png)
+   !["Lighthouse Home"](https://github.com/mzparulina/LightBnB/blob/master/LightBnB_WebApp/docs/lightbnb_home.png)
